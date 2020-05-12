@@ -31,36 +31,41 @@ std::vector<input_event*> KozikowLayoutRemapper::Remap(input_event* event) {
   std::vector<input_event*> result;
   if (event->type == EV_KEY) {
     switch (event->code) {
-      case KEY_RIGHTMETA:
-        if (keyboardType_ == mac) {
-            layerOn_ = event->value;
-            return result;
-        }
-      case KEY_RIGHTALT:
-        if (keyboardType_ == standard) {
-            layerOn_ = event->value;
-            return result;
-        }
-      case KEY_LEFTALT:
-        if (keyboardType_ == standard) {
-          event->code = KEY_LEFTMETA;
-        }
-        result.push_back(event);
-        return result;
-      case KEY_LEFTMETA:
-        if (keyboardType_ == standard) {
-          event->code = KEY_LEFTALT;
-        }
-        result.push_back(event);
-        return result;
-      case KEY_SYSRQ:
-        // It is what prtscrn on Thinkpad Carbon gets registered as.
-        if (keyboardType_ == standard) {
-          event->code = KEY_RIGHTALT;
-        }
-        result.push_back(event);
-        return result;
-      case KEY_CAPSLOCK:
+      // case KEY_RIGHTMETA:
+      //   if (keyboardType_ == mac) {
+      //       layerOn_ = event->value;
+      //       return result;
+      //   }
+      // case KEY_RIGHTALT:
+      //   if (keyboardType_ == standard) {
+      //       layerOn_ = event->value;
+      //       return result;
+      //   }
+      // case KEY_LEFTALT:
+      //   if (keyboardType_ == standard) {
+      //     event->code = KEY_LEFTMETA;
+      //   }
+      //   result.push_back(event);
+      //   return result;
+      // case KEY_LEFTMETA:
+      //   if (keyboardType_ == standard) {
+      //     event->code = KEY_LEFTALT;
+      //   }
+      //   result.push_back(event);
+      //   return result;
+      // case KEY_SYSRQ:
+      //   // It is what prtscrn on Thinkpad Carbon gets registered as.
+      //   if (keyboardType_ == standard) {
+      //     event->code = KEY_RIGHTALT;
+      //   }
+      //   result.push_back(event);
+      //   return result;
+
+      // case KEY_CAPSLOCK:
+      //   event->code = KEY_LEFTCTRL;
+      //   return ModifierOrKeyPress(event, KEY_ESC);
+
+      case KEY_LEFTCTRL:
         event->code = KEY_LEFTCTRL;
         return ModifierOrKeyPress(event, KEY_ESC);
       case KEY_ENTER: 
