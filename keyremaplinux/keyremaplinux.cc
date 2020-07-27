@@ -40,7 +40,7 @@ namespace keyremaplinux {
 }  // end namespace keyremaplinux
 
 int main(int argc, char* argv[]) {
-  std::vector<std::string> devices = keyremaplinux::FindKeyboardDevices();
+ std::vector<std::string> devices = keyremaplinux::FindKeyboardDevices();
   if (devices.empty()) {
     LOG(WARNING) << "Did not find any input devices";
   }
